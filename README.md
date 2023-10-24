@@ -4,7 +4,7 @@
 
 ## Descripción
 
-Este proyecto incluye tres paquetes principales: `modelo`, `vista`, y `controlador`.
+Este proyecto incluye tres paquetes principales: `modelo`, `vista`, y `controlador`. Ademas incleye una clase Main.java que inicializa el programas, e inserta 3 ejemplos de peliculas y series distintos para que en la [BBDDs](./BackUpBBDD.sql) no falten datos, ha la hora de llevar a cabo una prueba.
 
 ## Estructura del Proyecto
 
@@ -186,3 +186,34 @@ Lo unico que añade la clase `Serie` con respecto a `Contenido` son las temporad
 #### Hereda de: `Contenido`
 
 Esta clase `Pelicula` no añade ninguna modificación con respecto a `Contenido`, pero nos sirve para modularizar, el tipo de contenido con el que estamos trabajando.
+### Clase `Main`
+
+La clase `Main` es la clase principal del programa que contiene el método `main` para iniciar la aplicación.
+
+#### Métodos
+
+- `public static void main(String[] args)`: Método principal que inicia la aplicación.
+
+#### Método `main`
+
+El método `main` realiza las siguientes acciones:
+
+1. Crea instancias de las clases `Pelicula` y `Serie` para representar distintos contenidos multimedia.
+2. Llena las propiedades de cada contenido con información específica, como el nombre, año de producción, género, directores, actores, descripción e imagen.
+3. Intenta insertar los contenidos en la base de datos utilizando el método `insetarContenido(contenido)`.
+4. Crea una instancia de la clase `BBDD` para gestionar la base de datos.
+5. Crea una instancia de la clase `VistaPeliculaYSerie` para la interfaz gráfica y la asocia con la base de datos y el controlador.
+6. Crea una instancia de la clase `CtrlPeliculas` para el controlador y la asocia con la vista y la base de datos.
+
+#### Método `insetarContenido`
+
+- `public static void insetarContenido(Contenido contenido)`: Método que inserta un contenido en la base de datos.
+  - Parámetros:
+    - `contenido` (`Contenido`): El contenido que se va a insertar en la base de datos.
+  - Funcionamiento:
+    1. Crea una nueva instancia de la clase `BBDD` para gestionar la base de datos.
+    2. Establece una conexión a la base de datos utilizando el método `conectar()`.
+    3. Llama al método `insert(contenido)` de la base de datos para intentar insertar el contenido.
+    4. Imprime en la consola el resultado de la inserción.
+
+### Fin de la documentación
